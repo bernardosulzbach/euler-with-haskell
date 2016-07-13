@@ -1,2 +1,3 @@
-# euler-with-haskell
-Some solutions to Project Euler using Haskell
+# Euler with Haskell
+
+Some solutions to Project Euler problems using Haskell.
