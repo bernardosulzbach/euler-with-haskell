@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [ "$#" -lt 1 ]; then
+    echo "Pass the number of the problem to this script."
+else
+    NUMBER=`printf %03d $1`
+    ghc project-euler-$NUMBER.hs
+    ./project-euler-$NUMBER
+fi
