@@ -13,3 +13,8 @@ don't add any dependencies.
 # Runs the solution to #123
 $ ./run 123
 ```
+
+```bash
+# Runs the solution to #123 without compilation messages
+$ ./run 123 -q
+```
