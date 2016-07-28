@@ -1,9 +1,21 @@
 #!/usr/bin/env bash
 
+# Compiles and runs the specified problem.
+# If -q is passed after the problem number, the compilation is quiet.
+
 if [ "$#" -lt 1 ]; then
     echo "Pass the number of the problem to this script."
 else
     NUMBER=`printf %03d $1`
-    ghc project-euler-$NUMBER.hs
-    ./project-euler-$NUMBER
+    FILENAME=project-euler-$NUMBER.hs
+    if [ ! -f $FILENAME ]; then
+        echo "Could not find $FILENAME"
+    else
+        if [ "$#" -ge 2 -a "$2" = "-q" ]; then
+            ghc $FILENAME > /dev/null
+        else
+            ghc $FILENAME
+        fi
+        ./project-euler-$NUMBER
+    fi
 fi
