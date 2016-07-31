@@ -1,11 +1,15 @@
 import Data.List
-import System.IO
+import Data.Maybe
+
+minimumDigits = 1000
 
 fibs = 0 : 1 : zipWith (+) fibs (tail fibs)
 
 -- Counts the digits of a non-negative integer
-count_digits n
+countDigits n
     | n < 10 = 1
-    | otherwise = 1 + count_digits (quot n 10)
+    | otherwise = 1 + countDigits (quot n 10)
 
-main = do print (elemIndex (head (filter (\ x -> (count_digits x) >= 1000) fibs)) fibs)
+counts = fmap countDigits fibs
+
+main = do print (fromJust (findIndex (>= minimumDigits) counts))
